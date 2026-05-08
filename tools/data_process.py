@@ -1,3 +1,11 @@
+# ============================================================================
+# OPTIONAL - For data preparation from raw REFER datasets
+# ============================================================================
+# Use this script to process raw REFER datasets into JSON format
+# If using pre-processed datasets from Kaggle, this may not be needed
+# Usage: python tools/data_process.py --data_root /path/to/refer --output_dir datasets/ --dataset refcoco --generate_mask
+# ============================================================================
+
 import argparse
 import json
 import os

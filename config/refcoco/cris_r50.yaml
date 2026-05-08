@@ -14,6 +14,7 @@ TRAIN:
   vis_dim: 512
   fpn_in: [512, 1024, 1024]
   fpn_out: [256, 512, 1024]
+  num_steps: 10  # Number of time steps for SNN
   sync_bn: True
   # Decoder
   num_layers: 3
@@ -37,7 +38,7 @@ TRAIN:
   manual_seed: 0
   print_freq: 100
   # Resume & Save
-  exp_name: CRIS_R50
+  exp_name: CRIS_SNN_R50
   output_folder: exp/refcoco
   save_freq: 1
   weight:  # path to initial weight (default: none)

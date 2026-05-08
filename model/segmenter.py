@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from model.clip import build_model
+from model.snn_encoder import SNNVisionEncoder, SNNTextEncoder
 
 from .layers import FPN, Projector, TransformerDecoder
 
@@ -10,10 +10,9 @@ from .layers import FPN, Projector, TransformerDecoder
 class CRIS(nn.Module):
     def __init__(self, cfg):
         super().__init__()
-        # Vision & Text Encoder
-        clip_model = torch.jit.load(cfg.clip_pretrain,
-                                    map_location="cpu").eval()
-        self.backbone = build_model(clip_model.state_dict(), cfg.word_len).float()
+        # SNN Vision & Text Encoder
+        self.backbone = SNNVisionEncoder(input_size=cfg.input_size, num_steps=cfg.num_steps)
+        self.text_encoder = SNNTextEncoder(vocab_size=49408, embed_dim=cfg.vis_dim, num_steps=cfg.num_steps)
         # Multi-Modal FPN
         self.neck = FPN(in_channels=cfg.fpn_in, out_channels=cfg.fpn_out)
         # Decoder
@@ -39,8 +38,8 @@ class CRIS(nn.Module):
         # vis: C3 / C4 / C5
         # word: b, length, 1024
         # state: b, 1024
-        vis = self.backbone.encode_image(img)
-        word, state = self.backbone.encode_text(word)
+        vis = self.backbone(img)
+        word, state = self.text_encoder(word)
 
         # b, 512, 26, 26 (C4)
         fq = self.neck(vis, state)

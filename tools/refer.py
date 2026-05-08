@@ -1,3 +1,11 @@
+# ============================================================================
+# HELPER - Used by data_process.py for dataset loading
+# ============================================================================
+# This module provides API to access REFER datasets (refcoco, refcoco+, refcocog)
+# Only needed if using data_process.py to prepare raw datasets
+# Otherwise can be ignored for training with pre-processed datasets
+# ============================================================================
+
 __author__ = 'licheng'
 """
 This interface provides access to four datasets:

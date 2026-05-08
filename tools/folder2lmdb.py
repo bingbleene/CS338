@@ -1,3 +1,11 @@
+# ============================================================================
+# OPTIONAL - For converting datasets to LMDB format
+# ============================================================================
+# Use this script to convert JSON datasets into LMDB format for efficient data loading
+# If using pre-processed LMDB datasets from Kaggle, this is not needed
+# Usage: python tools/folder2lmdb.py -j datasets/anns/refcoco/train.json -i /path/to/images -m /path/to/masks -o datasets/lmdb/refcoco
+# ============================================================================
+
 import argparse
 import os
 import os.path as osp

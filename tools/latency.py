@@ -1,3 +1,11 @@
+# ============================================================================
+# OPTIONAL - For benchmarking/performance measurement only
+# ============================================================================
+# Use this script to measure FPS and GPU memory usage of the trained model
+# NOT needed for training, only for performance analysis
+# Usage: python tools/latency.py --config config/refcoco/cris_r50.yaml
+# ============================================================================
+
 import argparse
 import sys
 import time

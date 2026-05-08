@@ -1,3 +1,12 @@
+# ============================================================================
+# NOT NEEDED FOR CRIS-SNN
+# ============================================================================
+# This is the original CLIP implementation from CRIS.pytorch
+# CRIS-SNN uses SNNVisionEncoder and SNNTextEncoder instead (see snn_encoder.py)
+# This file is kept only for reference/comparison with original CLIP
+# You can DELETE this file if storage space is a concern
+# ============================================================================
+
 from collections import OrderedDict
 from typing import Tuple, Union
 
